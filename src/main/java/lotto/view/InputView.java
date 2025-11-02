@@ -25,24 +25,34 @@ public class InputView {
     public PurchasePrice inputPurchasePrice() {
         printPriceInputInfo();
         String input = userInput();
-        PurchasePrice price = PurchasePrice.of(Integer.parseInt(input));
-        return price;
+        try{
+            return PurchasePrice.of(Integer.parseInt(input));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER_FORMAT.getMessage());
+        }
     }
 
     public List<Integer> inputWinningNumbers() {
         printWinningNumbersInfo();
         String input = userInput();
-        return Arrays.stream(input.split(DELIMITER))
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        try {
+            return Arrays.stream(input.split(DELIMITER))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER_FORMAT.getMessage());
+        }
     }
 
     public int inputBonusNumber() {
         printBonnusNumberInfo();
         String input = userInput();
-        int bonus = Integer.parseInt(input);
-        return bonus;
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER_FORMAT.getMessage());
+        }
     }
 
     private String userInput() {
