@@ -22,6 +22,6 @@ public class LottoController {
         PurchasePrice purchasePrice = inputView.inputPurchasePrice();
         List<Integer> winnigNumbers = inputView.inputWinningNumbers(); // TODO: 검증
         Lotto winningLotto = new Lotto(winnigNumbers);
-//        int bonusNumber = inputView.inputBonusNumber();
+        int bonusNumber = inputView.inputBonusNumber();
     }
 }
