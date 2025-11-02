@@ -1,5 +1,8 @@
 package lotto.controller;
 
+import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.PurchasePrice;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -16,6 +19,9 @@ public class LottoController {
     }
 
     public void start() {
-        inputView.inputPurchasePrice();
+        PurchasePrice purchasePrice = inputView.inputPurchasePrice();
+        List<Integer> winnigNumbers = inputView.inputWinningNumbers(); // TODO: 검증
+        Lotto winningLotto = new Lotto(winnigNumbers);
+//        int bonusNumber = inputView.inputBonusNumber();
     }
 }
