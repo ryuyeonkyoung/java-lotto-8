@@ -17,6 +17,10 @@ public class PurchasePrice {
         return new PurchasePrice(purchaseAmount);
     }
 
+    public int getPublLottoNum() {
+        return purchaseAmount % PRICE_UNIT;
+    }
+
     private void validatePurchaseUnit(int purchaseAmount) {
         if (purchaseAmount % PRICE_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.PRICE_UNIT_WRONG.getMessage());

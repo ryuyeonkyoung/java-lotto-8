@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.PurchasePrice;
+import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -20,8 +21,12 @@ public class LottoController {
 
     public void start() {
         PurchasePrice purchasePrice = inputView.inputPurchasePrice();
-        List<Integer> winnigNumbers = inputView.inputWinningNumbers(); // TODO: 검증
-        Lotto winningLotto = new Lotto(winnigNumbers);
+        List<Integer> winnigNumbers = inputView.inputWinningNumbers();
+        Lotto lotto = new Lotto(winnigNumbers);
         int bonusNumber = inputView.inputBonusNumber();
+
+        WinningLotto winningLotto = WinningLotto.of(lotto, bonusNumber);
+//        List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
+
     }
 }
