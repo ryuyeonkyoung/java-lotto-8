@@ -21,12 +21,13 @@ public class LottoController {
 
     public void start() {
         PurchasePrice purchasePrice = inputView.inputPurchasePrice();
+        List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
+        outputView.printPurchaseLottos(publLottos);
+
         List<Integer> winnigNumbers = inputView.inputWinningNumbers();
         Lotto lotto = new Lotto(winnigNumbers);
         int bonusNumber = inputView.inputBonusNumber();
 
         WinningLotto winningLotto = WinningLotto.of(lotto, bonusNumber);
-        List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
-
     }
 }

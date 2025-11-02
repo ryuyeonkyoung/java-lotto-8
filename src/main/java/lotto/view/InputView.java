@@ -48,6 +48,7 @@ public class InputView {
     private String userInput() {
         String userInput = Console.readLine();
         validateBlank(userInput);
+        System.out.println();
         return userInput;
     }
 

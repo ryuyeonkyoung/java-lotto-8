@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +25,7 @@ public class Lotto {
     // TODO: 메소드명
     public static Lotto createRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
         return new Lotto(numbers);
     }
 
@@ -51,5 +54,9 @@ public class Lotto {
 
     private boolean isNumOutOfRange(int n) {
         return n < LOTTO_MIN_NUM_INTENSION || n > LOTTO_MAX_NUM_INTENSION;
+    }
+
+    public String toString() {
+        return numbers.toString();
     }
 }
