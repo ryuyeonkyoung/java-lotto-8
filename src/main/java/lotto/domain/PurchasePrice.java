@@ -9,6 +9,7 @@ public class PurchasePrice {
     private final int purchaseAmount;
 
     private PurchasePrice(int purchaseAmount) {
+        validatePurchaseUnit(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
     }
 
@@ -16,7 +17,7 @@ public class PurchasePrice {
         return new PurchasePrice(purchaseAmount);
     }
 
-    private void validatePurchaseUnit() {
+    private void validatePurchaseUnit(int purchaseAmount) {
         if (purchaseAmount % PRICE_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.PRICE_UNIT_WRONG.getMessage());
         }
