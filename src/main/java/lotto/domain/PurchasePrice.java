@@ -18,7 +18,7 @@ public class PurchasePrice {
     }
 
     public int getPublLottoNum() {
-        return purchaseAmount % PRICE_UNIT;
+        return this.purchaseAmount / PRICE_UNIT;
     }
 
     private void validatePurchaseUnit(int purchaseAmount) {
