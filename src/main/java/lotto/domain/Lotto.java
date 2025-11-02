@@ -1,0 +1,47 @@
+package lotto.domain;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import lotto.exception.ErrorMessage;
+
+public class Lotto {
+
+    private final static int LOTTO_MIN_NUM_INTENSION = 1;
+    private final static int LOTTO_MAX_NUM_INTENSION = 45;
+
+    private final List<Integer> numbers;
+
+    public Lotto(List<Integer> numbers) {
+        validate(numbers);
+        validateNumber(numbers);
+        this.numbers = numbers;
+    }
+
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        }
+    }
+
+    private void validateNumber(List<Integer> numbers) {
+        // TODO: depth = 2
+        for (int n : numbers) {
+            if (isNumOutOfRange(n)) {
+                throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_OUT_OF_RANGE.getMessage());
+            }
+        }
+    }
+
+    // TODO: 위와 합치면 for문 한번만 가능
+    private void validateDuplicateNumber(List<Integer> numbers) {
+        Set<Integer> distinctNumbers = new HashSet<>(numbers);
+        if (distinctNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_DUPLICATED.getMessage());
+        }
+    }
+
+    private boolean isNumOutOfRange(int n) {
+        return n < LOTTO_MIN_NUM_INTENSION || n > LOTTO_MAX_NUM_INTENSION;
+    }
+}
