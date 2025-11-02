@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +18,12 @@ public class Lotto {
         validateNumber(numbers);
         validateDuplicateNumber(numbers);
         this.numbers = numbers;
+    }
+
+    // TODO: 메소드명
+    public static Lotto createRandomLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(numbers);
     }
 
     private void validate(List<Integer> numbers) {

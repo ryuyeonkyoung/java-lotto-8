@@ -26,7 +26,7 @@ public class LottoController {
         int bonusNumber = inputView.inputBonusNumber();
 
         WinningLotto winningLotto = WinningLotto.of(lotto, bonusNumber);
-//        List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
+        List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
 
     }
 }
