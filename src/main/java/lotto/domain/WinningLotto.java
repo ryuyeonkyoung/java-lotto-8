@@ -30,8 +30,8 @@ public class WinningLotto {
         return corrNum;
     }
 
-    public boolean isBonusNumberCorrect(int n) {
-        return n == bonusNumber;
+    public boolean isBonusNumCorrect(Lotto userLotto) {
+        return userLotto.getNumbers().contains(bonusNumber);
     }
 
     // TODO: LottoNumber 객체 만든 후 테스트 코드 수정해도 되는지 확인하기

@@ -28,17 +28,18 @@ public class LottoService {
 
         for (Lotto publLotto : publLottos) {
             int corrNum = winningLotto.getCorrectNum(publLotto);
-            int rank = getRank(corrNum);
+            boolean isBonusNumCorrect = winningLotto.isBonusNumCorrect(publLotto);
+            int rank = getRank(corrNum, isBonusNumCorrect);
             ranks.put(rank, ranks.getOrDefault(rank,0) + 1);
         }
         return ranks;
     }
 
-    private int getRank(int corrNum) {
+    private int getRank(int corrNum, boolean isBonusNumCorrect) {
         if (corrNum == Rank.일등.getCorrectNumber()) {
             return 1;
         }
-        if (corrNum == Rank.이등.getCorrectNumber()) { // TODO: 보너스 넘버 일치 고려
+        if (corrNum == Rank.이등.getCorrectNumber() && isBonusNumCorrect) {
             return 2;
         }
         if (corrNum == Rank.삼등.getCorrectNumber()) {
@@ -47,6 +48,9 @@ public class LottoService {
         if (corrNum == Rank.사등.getCorrectNumber()) {
             return 4;
         }
-        return 5;
+        if (corrNum == Rank.오등.getCorrectNumber()) {
+            return 5;
+        }
+        return -1;
     }
 }
