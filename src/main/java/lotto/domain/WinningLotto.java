@@ -21,6 +21,7 @@ public class WinningLotto {
     }
 
     public int getCorrectNum(Lotto purchasedLotto) {
+        // TODO: Stream으로 작성
         int correctNum = 0;
         for (int n : lotto.getNumbers()) {
             if (purchasedLotto.isContainNum(n)) {
@@ -43,9 +44,5 @@ public class WinningLotto {
 
     private boolean isNumberOutOfRange(int n) {
         return n < LOTTO_MIN_NUM_INTENSION || n > LOTTO_MAX_NUM_INTENSION;
-    }
-
-    public int 우승자들 () {
-        return 0;
     }
 }

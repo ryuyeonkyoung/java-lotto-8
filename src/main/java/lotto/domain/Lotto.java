@@ -12,6 +12,7 @@ public class Lotto {
 
     private final static int LOTTO_MIN_NUM_INTENSION = 1;
     private final static int LOTTO_MAX_NUM_INTENSION = 45;
+    private final static int LOTTO_WINNING_NUM = 6;
 
     private final List<Integer> numbers;
 
@@ -24,7 +25,8 @@ public class Lotto {
 
     // TODO: 메소드명
     public static Lotto createRandomLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUM_INTENSION, LOTTO_MAX_NUM_INTENSION,
+                LOTTO_WINNING_NUM);
         List<Integer> mutableNumbers = new ArrayList<>(numbers);
         Collections.sort(mutableNumbers); // 변경 불가능한 컬렉션 정렬
         return new Lotto(mutableNumbers);
@@ -39,13 +41,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        if (numbers.size() != LOTTO_WINNING_NUM) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_WINNING_NUMBER_OUT_OF_RANDE.getMessage());
         }
     }
 
     private void validateNumber(List<Integer> numbers) {
-        // TODO: depth = 2
         for (int n : numbers) {
             if (isNumOutOfRange(n)) {
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_OUT_OF_RANGE.getMessage());
