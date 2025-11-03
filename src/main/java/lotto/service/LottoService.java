@@ -1,13 +1,8 @@
 package lotto.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lotto.domain.Lotto;
-import lotto.domain.PurchasePrice;
-import lotto.domain.Rank;
-import lotto.domain.WinningLotto;
 
 public class LottoService {
 
@@ -19,9 +14,4 @@ public class LottoService {
         }
         return lottos;
     }
-
-
-
-    // TODO: Rank 객체 전환 고려 (비즈니스 로직 다수 존재)
-
 }

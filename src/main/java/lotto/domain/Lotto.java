@@ -54,7 +54,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 위와 합치면 for문 한번만 가능
     private void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
         if (distinctNumbers.size() != numbers.size()) {
