@@ -36,7 +36,7 @@ public class LottoController {
         Map<Integer, Integer> ranks = lottoService.getRanks(publLottos,winningLotto);
 
         // 당첨 통계 출력
-//        outputView.printRanks(ranks);
+        outputView.printRanks(ranks);
 
         // 수익률
         outputView.printRate(1.65);
