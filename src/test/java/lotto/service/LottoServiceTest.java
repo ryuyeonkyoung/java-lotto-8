@@ -1,6 +1,5 @@
 package lotto.service;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -13,7 +12,7 @@ public class LottoServiceTest extends NsTest {
 
     private final LottoService lottoService = new LottoService();
 
-    @DisplayName("로또가 요청된 개수만큼 생성되었는지 확인한다..")
+    @DisplayName("로또가 요청된 개수만큼 생성되었는지 확인한다.")
     @Test
     void 로또_개수_일치_확인() {
         int lottoNum = 3;
