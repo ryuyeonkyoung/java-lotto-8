@@ -21,6 +21,10 @@ public class PurchasePrice {
         return this.purchaseAmount / PRICE_UNIT;
     }
 
+    public double getRevenueRate(int revenue) {
+        return (double) revenue / purchaseAmount * 100;
+    }
+
     private void validatePurchaseUnit(int purchaseAmount) {
         if (purchaseAmount % PRICE_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.PRICE_UNIT_WRONG.getMessage());

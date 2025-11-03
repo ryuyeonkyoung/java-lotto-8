@@ -39,6 +39,7 @@ public class LottoController {
         outputView.printRanks(ranks);
 
         // 수익률
-        outputView.printRate(1.65);
+        double rate = lottoService.getRevenueRate(ranks, purchasePrice);
+        outputView.printRate(rate);
     }
 }
