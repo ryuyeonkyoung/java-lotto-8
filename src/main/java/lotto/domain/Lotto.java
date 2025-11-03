@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -25,8 +26,9 @@ public class Lotto {
     // TODO: 메소드명
     public static Lotto createRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return new Lotto(numbers);
+        List<Integer> mutableNumbers = new ArrayList<>(numbers);
+        Collections.sort(mutableNumbers); // 변경 불가능한 컬렉션 정렬
+        return new Lotto(mutableNumbers);
     }
 
     public boolean isContainNum(int n) {
