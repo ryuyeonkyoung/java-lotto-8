@@ -21,13 +21,13 @@ public class WinningLotto {
     }
 
     public int getCorrectNum(Lotto userLotto) {
-        int corrNum = 0;
+        int correctNum = 0;
         for (int n : lotto.getNumbers()) {
             if (userLotto.isContainNum(n)) {
-                corrNum++;
+                correctNum++;
             }
         }
-        return corrNum;
+        return correctNum;
     }
 
     public boolean isBonusNumCorrect(Lotto userLotto) {
@@ -36,12 +36,12 @@ public class WinningLotto {
 
     // TODO: LottoNumber 객체 만든 후 테스트 코드 수정해도 되는지 확인하기
     private void validateBonusNumber(int bonusNumber) {
-        if (isNumOutOfRange(bonusNumber)) {
+        if (isNumberOutOfRange(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_OUT_OF_RANGE.getMessage());
         }
     }
 
-    private boolean isNumOutOfRange(int n) {
+    private boolean isNumberOutOfRange(int n) {
         return n < LOTTO_MIN_NUM_INTENSION || n > LOTTO_MAX_NUM_INTENSION;
     }
 
