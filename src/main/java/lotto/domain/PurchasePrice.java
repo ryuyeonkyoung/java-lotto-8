@@ -22,6 +22,9 @@ public class PurchasePrice {
     }
 
     public double getRevenueRate(int revenue) {
+        if (purchaseAmount == 0) {
+            return 0;
+        }
         return (double) revenue / purchaseAmount * 100;
     }
 
