@@ -29,6 +29,14 @@ public class Lotto {
         return new Lotto(numbers);
     }
 
+    public boolean isContainNum(int n) {
+        return numbers.contains(n);
+    }
+
+    List<Integer> getNumbers() {
+        return List.copyOf(numbers);
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");

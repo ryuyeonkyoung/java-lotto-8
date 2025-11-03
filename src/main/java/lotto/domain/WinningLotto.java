@@ -20,6 +20,20 @@ public class WinningLotto {
         return new WinningLotto(lotto, bonusNumber);
     }
 
+    public int getCorrectNum(Lotto userLotto) {
+        int corrNum = 0;
+        for (int n : lotto.getNumbers()) {
+            if (userLotto.isContainNum(n)) {
+                corrNum++;
+            }
+        }
+        return corrNum;
+    }
+
+    public boolean isBonusNumberCorrect(int n) {
+        return n == bonusNumber;
+    }
+
     // TODO: LottoNumber 객체 만든 후 테스트 코드 수정해도 되는지 확인하기
     private void validateBonusNumber(int bonusNumber) {
         if (isNumOutOfRange(bonusNumber)) {
