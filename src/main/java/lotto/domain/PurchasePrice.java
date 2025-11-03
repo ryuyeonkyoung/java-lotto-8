@@ -17,7 +17,7 @@ public class PurchasePrice {
         return new PurchasePrice(purchaseAmount);
     }
 
-    public int getPublLottoNum() {
+    public int getPurchasedLottoNum() {
         return this.purchaseAmount / PRICE_UNIT;
     }
 

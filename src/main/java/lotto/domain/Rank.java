@@ -32,16 +32,16 @@ public enum Rank {
     }
 
     // TODO: static 테스트 용이성 고려
-    public static Map<Integer, Integer> getRanks(List<Lotto> publLottos, WinningLotto winningLotto) {
+    public static Map<Integer, Integer> getRanks(List<Lotto> purchasedLottos, WinningLotto winningLotto) {
         Map<Integer, Integer> ranks = new HashMap<>();
 
         for (int i = 1; i <= 5; i++) {
             ranks.put(i,0);
         }
 
-        for (Lotto publLotto : publLottos) {
-            int corrNum = winningLotto.getCorrectNum(publLotto);
-            boolean isBonusNumCorrect = winningLotto.isBonusNumCorrect(publLotto);
+        for (Lotto purchasedLotto : purchasedLottos) {
+            int corrNum = winningLotto.getCorrectNum(purchasedLotto);
+            boolean isBonusNumCorrect = winningLotto.isBonusNumCorrect(purchasedLotto);
             int rank = getRank(corrNum, isBonusNumCorrect);
             ranks.put(rank, ranks.getOrDefault(rank,0) + 1);
         }

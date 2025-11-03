@@ -20,18 +20,18 @@ public class WinningLotto {
         return new WinningLotto(lotto, bonusNumber);
     }
 
-    public int getCorrectNum(Lotto userLotto) {
+    public int getCorrectNum(Lotto purchasedLotto) {
         int correctNum = 0;
         for (int n : lotto.getNumbers()) {
-            if (userLotto.isContainNum(n)) {
+            if (purchasedLotto.isContainNum(n)) {
                 correctNum++;
             }
         }
         return correctNum;
     }
 
-    public boolean isBonusNumCorrect(Lotto userLotto) {
-        return userLotto.getNumbers().contains(bonusNumber);
+    public boolean isBonusNumCorrect(Lotto purchasedLotto) {
+        return purchasedLotto.getNumbers().contains(bonusNumber);
     }
 
     // TODO: LottoNumber 객체 만든 후 테스트 코드 수정해도 되는지 확인하기

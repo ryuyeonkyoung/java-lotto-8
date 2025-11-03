@@ -23,11 +23,11 @@ public class LottoController {
 
     public void start() {
         PurchasePrice purchasePrice = readPurchasePrice();
-        List<Lotto> publLottos = createAndPrintLottos(purchasePrice);
+        List<Lotto> purchasedLottos = createAndPrintLottos(purchasePrice);
 
         WinningLotto winningLotto = readAndCreateWinningLotto();
 
-        Map<Integer, Integer> ranks = Rank.getRanks(publLottos,winningLotto);
+        Map<Integer, Integer> ranks = Rank.getRanks(purchasedLottos,winningLotto);
         printRanks(ranks);
         printRate(ranks, purchasePrice);
     }
@@ -37,9 +37,9 @@ public class LottoController {
     }
 
     private List<Lotto> createAndPrintLottos(PurchasePrice purchasePrice) {
-        List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
-        outputView.printPurchaseLottos(publLottos);
-        return publLottos;
+        List<Lotto> purchasedLottos = lottoService.createLottos(purchasePrice.getPurchasedLottoNum());
+        outputView.printPurchaseLottos(purchasedLottos);
+        return purchasedLottos;
     }
 
     private WinningLotto readAndCreateWinningLotto() {
