@@ -29,5 +29,7 @@ public class LottoController {
         int bonusNumber = inputView.inputBonusNumber();
 
         WinningLotto winningLotto = WinningLotto.of(lotto, bonusNumber);
+
+        outputView.printRate(1.65);
     }
 }
