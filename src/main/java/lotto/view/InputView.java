@@ -22,7 +22,7 @@ public class InputView {
         return new InputView();
     }
 
-    public PurchasePrice inputPurchasePrice() {
+    public PurchasePrice readPurchasePrice() {
         printPriceInputInfo();
         String input = userInput();
         try{
@@ -32,7 +32,7 @@ public class InputView {
         }
     }
 
-    public List<Integer> inputWinningNumbers() {
+    public List<Integer> readWinningNumbers() {
         printWinningNumbersInfo();
         String input = userInput();
         try {
@@ -45,7 +45,7 @@ public class InputView {
         }
     }
 
-    public int inputBonusNumber() {
+    public int readBonusNumber() {
         printBonnusNumberInfo();
         String input = userInput();
         try {

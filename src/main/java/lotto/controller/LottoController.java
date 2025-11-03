@@ -22,25 +22,40 @@ public class LottoController {
     }
 
     public void start() {
-        // 구입 금액
-        PurchasePrice purchasePrice = inputView.inputPurchasePrice();
+        PurchasePrice purchasePrice = readPurchasePrice();
+        List<Lotto> publLottos = createAndPrintLottos(purchasePrice);
+
+        WinningLotto winningLotto = readAndCreateWinningLotto();
+
+        Map<Integer, Integer> ranks = Rank.getRanks(publLottos,winningLotto);
+        printRanks(ranks);
+        printRate(ranks, purchasePrice);
+    }
+
+    private PurchasePrice readPurchasePrice () {
+        return inputView.readPurchasePrice();
+    }
+
+    private List<Lotto> createAndPrintLottos(PurchasePrice purchasePrice) {
         List<Lotto> publLottos = lottoService.createLottos(purchasePrice.getPublLottoNum());
         outputView.printPurchaseLottos(publLottos);
+        return publLottos;
+    }
 
-        // 당첨 번호
-        List<Integer> winnigNumbers = inputView.inputWinningNumbers();
+    private WinningLotto readAndCreateWinningLotto() {
+        List<Integer> winnigNumbers = inputView.readWinningNumbers();
+        int bonusNumber = inputView.readBonusNumber();
         Lotto lotto = new Lotto(winnigNumbers);
-        int bonusNumber = inputView.inputBonusNumber();
-        WinningLotto winningLotto = WinningLotto.of(lotto, bonusNumber);
+        return WinningLotto.of(lotto, bonusNumber);
+    }
 
-        // 순위 및 당첨 통계 계산
-        Map<Integer, Integer> ranks = Rank.getRanks(publLottos,winningLotto);
-
-        // 당첨 통계 출력
+    private void printRanks(Map<Integer, Integer> ranks) {
         outputView.printRanks(ranks);
+    }
 
-        // 수익률
+    private void printRate(Map<Integer, Integer> ranks, PurchasePrice purchasePrice) {
         double rate = Rank.getRevenueRate(ranks, purchasePrice);
         outputView.printRate(rate);
     }
+
 }
