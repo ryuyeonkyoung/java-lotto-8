@@ -42,7 +42,7 @@ public enum Rank {
         for (Lotto publLotto : publLottos) {
             int corrNum = winningLotto.getCorrectNum(publLotto);
             boolean isBonusNumCorrect = winningLotto.isBonusNumCorrect(publLotto);
-            int rank = getRank(corrNum);
+            int rank = getRank(corrNum, isBonusNumCorrect);
             ranks.put(rank, ranks.getOrDefault(rank,0) + 1);
         }
         return ranks;
@@ -64,11 +64,11 @@ public enum Rank {
         return revenue;
     }
 
-    private static int getRank(int corrNum) {
+    private static int getRank(int corrNum, boolean isBonusNumCorrect) {
         if (corrNum == Rank.일등.correctNumber) {
             return 1;
         }
-        if (corrNum == Rank.이등.correctNumber && Rank.이등.isBonusNumCorrect) {
+        if (corrNum == Rank.이등.correctNumber && isBonusNumCorrect) {
             return 2;
         }
         if (corrNum == Rank.삼등.correctNumber) {
