@@ -19,4 +19,8 @@ public enum ErrorMessage {
     public String getMessage() {
         return message;
     }
+
+    public static void showErrorMessage (String message) {
+        System.out.println(message);
+    }
 }

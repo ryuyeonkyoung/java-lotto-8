@@ -48,6 +48,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 로또_1개_발급_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
@@ -188,10 +196,10 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력값이_비정수_예외_테스트() {
         assertSimpleTest(
-                () -> assertThatThrownBy(() -> run("1000j"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 숫자가 아닙니다.")
-        );
+                () -> {
+                    run("1000j");
+                    Assertions.assertThat(output()).contains("[ERROR] 숫자가 아닙니다.");
+                });
     }
 
     @Override
